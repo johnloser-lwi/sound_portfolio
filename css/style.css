@@ -28,13 +28,13 @@ body {
 
 header {
     background-color: var(--primary-color);
-    padding: 0 20px;
+    padding: 0 50px;
     height: 10%;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 5px 5px 5px #0008;
+    box-shadow: 0 5px 5px #0008;
     position: relative;
     z-index: 100;
 }
@@ -81,7 +81,7 @@ a:hover {
 
 
 main {
-    height: 90%;
+    height: 85%;
     align-content: center;
     overflow-y: scroll;
 }
@@ -97,6 +97,7 @@ main {
 
 .info-image {
     height: 80vh;
+    border-radius: 30px;
 }
 
 .info-text {
@@ -156,7 +157,7 @@ main {
 }
 
 #contact-form {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -166,14 +167,17 @@ main {
 }
 
 .form-entry {
-    max-width: 600px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 30px;
 }
 
+textarea {
+    resize: none;
+}
+
 .form-entry input, .form-entry textarea {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
     border: 2px solid transparent;
     transition: border 0.2s ease-in-out;
@@ -193,6 +197,39 @@ main {
     width: 100%;
 }
 
+footer {
+    height: 5%;
+    background-color: var(--primary-color);
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 -5px 5px #0008;
+}
+
+.socials {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.socials a {
+    width: 30px;
+    height: 30px;
+}
+
+.socials a img {
+    border-radius: 30%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.socials a img:hover {
+    background-color: white;
+}
+
 @media (max-width: 1500px) {
     .info-image {
         display: none;
@@ -200,11 +237,26 @@ main {
 
     .projects {
         grid-template-columns: auto;
+        margin: 20px 5px;
     }
 
     .form-entry {
         grid-template-columns: auto;
         grid-auto-flow: row;
     }
+
+    header, footer {
+        padding: 0 20px;
+    }
     
+}
+
+@media (max-width: 500px) {
+    .projects {
+        gap: 20px
+    }
+
+    .project-card {
+        padding: 20px 5px;
+    }
 }
