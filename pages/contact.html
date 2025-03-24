@@ -18,5 +18,26 @@
             </ul>
         </nav>
     </header>
+    <main>
+        <div class="form-container">
+            <form id="contact-form" action="">
+                <div class="form-entry">
+                    <label for="client-name">Name</label>
+                    <input type="text" id="client-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-entry">
+                    <label for="client-email">E-mail</label>
+                    <input type="text" id="client-email" placeholder="Your Email" required>
+                </div>
+                <div class="form-entry msg-entry">
+                    <label for="client-msg">Message</label>
+                    <textarea name="client-msg" id="client-msg" required></textarea>
+                </div>
+                <input id="contact-me" class="button" type="button" value="Contact Me" onclick="handleMail()">
+            </form>
+        </div>
+    </main>
+
+    <script src="/js/handlemail.js"></script>
 </body>
 </html>
