@@ -61,6 +61,8 @@ a {
     text-decoration: none;
     color: var(--alternative-font-color);
     transition: color 0.2s ease-in-out;
+    opacity: 0%;
+    animation: fade-in 0.4s ease-in-out 0.2s 1 forwards;
 }
 
 a:link, a:visited {
@@ -71,19 +73,11 @@ a:hover {
     color: var(--font-color)
 }
 
-.button {
-    transition: color 0.2s ease-in-out;
-}
-
-.button:hover {
-    color: var(--font-color)
-}
-
-
 main {
     height: 85%;
-    align-content: center;
     overflow-y: scroll;
+    align-content: center;
+    animation: fade-in 0.8s ease-in-out 1 forwards;
 }
 
 .info-section {
@@ -117,6 +111,13 @@ main {
     border-radius: 20px;
     text-align: center;
     border: none;
+    transition: color 0.2s ease-in-out;
+    opacity: 0%;
+    animation: fade-in 0.8s ease-in-out 0.2s 1 forwards;
+}
+
+.button:hover {
+    color: var(--font-color)
 }
 
 .projects {
@@ -228,6 +229,15 @@ footer {
 
 .socials a img:hover {
     background-color: white;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
 }
 
 @media (max-width: 1500px) {
