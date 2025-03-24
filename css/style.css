@@ -28,13 +28,18 @@ body {
 
 header {
     background-color: var(--primary-color);
-    max-height: 10%;
+    padding: 0 20px;
+    height: 10%;
     overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 5px 5px 5px #0008;
+    position: relative;
+    z-index: 100;
 }
 
 header nav {
-    box-sizing: border-box;
-    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
