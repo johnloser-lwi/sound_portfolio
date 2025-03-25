@@ -105,6 +105,10 @@ main {
 }
 
 .button {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
     background-color: var(--primary-color);
     box-sizing: border-box;
     padding: 0.5rem 2rem;
@@ -165,6 +169,10 @@ main {
     gap: 30px;
     padding: 20px;
     box-sizing: border-box;
+}
+
+#contact-form * {
+    font-family: inherit;
 }
 
 .form-entry {

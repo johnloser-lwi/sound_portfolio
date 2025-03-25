@@ -10,5 +10,5 @@ function handleMail() {
     ${clientMsg.value}
     `;
 
-    window.open(`mailto:weiqinyangsound.com?subject=${"Info Requiry"}&body=${body}`);
+    window.open(`mailto:weiqinyangsound@gmail.com?subject=${"Info Requiry"}&body=${body}`);
 }
