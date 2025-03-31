@@ -20,35 +20,32 @@ function handleMail() {
 
     const body = `\nName: ${clientName.value}\nEmail: ${clientEmail.value}\n${clientMsg.value}\n\n`;
 
-    Notification.requestPermission().then((result) => {
-        if (!result.includes("granted")) return;
-        notificationBox.style.display = "block";
-        notificationBox
-            .animate(
-                [{ opacity: "0%"}, { opacity: "100%" }],
-                {
-                    fill: "forwards",
-                    easing: "ease-in-out",
-                    duration: 300,
-                },
-            );
-        notificationDial
-            .animate(
-                [{ opacity: "0%"}, { opacity: "100%" }],
-                {
-                    fill: "forwards",
-                    easing: "ease-in-out",
-                    delay: 200,
-                    duration: 300,
-                },
-            );
-        notificationMsg.innerText = msg;
-        if (msg !== SENT) return;
-        discord_message("https://discord.com/api/webhooks/1356311727389540556/TwXNbLnuUikxpKwSRxIkWlXeDUzZ7pGOX5V0Cb5F3IDz92DQ6G6nQzLTgY-1j75aSrSf", body);
-        clientName.value = "";
-        clientEmail.value = "";
-        clientMsg.value = "";
-      });
+    notificationBox.style.display = "block";
+    notificationBox
+        .animate(
+            [{ opacity: "0%"}, { opacity: "100%" }],
+            {
+                fill: "forwards",
+                easing: "ease-in-out",
+                duration: 300,
+            },
+        );
+    notificationDial
+        .animate(
+            [{ opacity: "0%"}, { opacity: "100%" }],
+            {
+                fill: "forwards",
+                easing: "ease-in-out",
+                delay: 200,
+                duration: 300,
+            },
+        );
+    notificationMsg.innerText = msg;
+    if (msg !== SENT) return;
+    discord_message("https://discord.com/api/webhooks/1356311727389540556/TwXNbLnuUikxpKwSRxIkWlXeDUzZ7pGOX5V0Cb5F3IDz92DQ6G6nQzLTgY-1j75aSrSf", body);
+    clientName.value = "";
+    clientEmail.value = "";
+    clientMsg.value = "";
 }
 
 function closeDialogue() {
