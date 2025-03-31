@@ -10,6 +10,13 @@ const SENT =  "Message sent!";
 const INVALID = "Invalid information!";
 const ERROR = "Failed to send!";
 
+const opactiyAnimation = { opacity: [0, 1] };
+const animationSettings = {
+    fill: "forwards",
+    easing: "ease-in-out",
+    duration: 300,
+};
+
 function handleMail() {
 
     let msg = SENT;
@@ -39,21 +46,15 @@ function fadeInDialogue() {
     notificationBox.style.display = "block";
     notificationBox
         .animate(
-            [{ opacity: "0%"}, { opacity: "100%" }],
-            {
-                fill: "forwards",
-                easing: "ease-in-out",
-                duration: 300,
-            },
+            opactiyAnimation,
+            animationSettings,
         );
     const dialAnimation = notificationDial
         .animate(
-            [{ opacity: "0%"}, { opacity: "100%" }],
+            opactiyAnimation,
             {
-                fill: "forwards",
-                easing: "ease-in-out",
+                ...animationSettings,
                 delay: 200,
-                duration: 300,
             },
         );
 
@@ -64,25 +65,25 @@ function fadeInDialogue() {
 
 function closeDialogue() {
     notificationButton.disabled = true;
+    const reverseAnimationSettings = {
+        ...animationSettings,
+        direction: "reverse",
+    };
+
     const fadeOut = notificationBox
             .animate(
-                [{ opacity: "100%" }, { opacity: "0%" }],
-                {
-                fill: "forwards",
-                easing: "ease-in-out",
-                duration: 300,
-                },
-            )
+                opactiyAnimation,
+                reverseAnimationSettings,
+            );
     fadeOut.onfinish = () => {
                 notificationBox.style.display = "none";
             };
 
     notificationDial
             .animate(
-                [{ opacity: "100%"}, { opacity: "0%" }],
+                opactiyAnimation,
                 {
-                    fill: "forwards",
-                    easing: "ease-in-out",
+                    ...reverseAnimationSettings,
                     duration: 200,
                 },
             );
