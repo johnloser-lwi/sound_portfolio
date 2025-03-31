@@ -1,5 +1,6 @@
 const notificationBox = document.getElementById("notification-box");
 const notificationDial = document.querySelector("#notification-box .dialogue");
+const notificationButton = document.querySelector("#notification-box .button");
 const notificationMsg = document.getElementById("notification-msg");
 const clientName = document.getElementById("client-name");
 const clientEmail = document.getElementById("client-email");
@@ -20,6 +21,21 @@ function handleMail() {
 
     const body = `\nName: ${clientName.value}\nEmail: ${clientEmail.value}\n${clientMsg.value}\n\n`;
 
+    fadeInDialogue();
+    notificationMsg.innerText = msg;
+    if (msg !== SENT) return;
+    discord_message("https://discord.com/api/webhooks/1356311727389540556/TwXNbLnuUikxpKwSRxIkWlXeDUzZ7pGOX5V0Cb5F3IDz92DQ6G6nQzLTgY-1j75aSrSf", body);
+    clearInputs();
+}
+
+function clearInputs() {
+    clientName.value = "";
+    clientEmail.value = "";
+    clientMsg.value = "";
+}
+
+function fadeInDialogue() {
+    notificationBox.disabled = true;
     notificationBox.style.display = "block";
     notificationBox
         .animate(
@@ -30,7 +46,7 @@ function handleMail() {
                 duration: 300,
             },
         );
-    notificationDial
+    const dialAnimation = notificationDial
         .animate(
             [{ opacity: "0%"}, { opacity: "100%" }],
             {
@@ -40,15 +56,14 @@ function handleMail() {
                 duration: 300,
             },
         );
-    notificationMsg.innerText = msg;
-    if (msg !== SENT) return;
-    discord_message("https://discord.com/api/webhooks/1356311727389540556/TwXNbLnuUikxpKwSRxIkWlXeDUzZ7pGOX5V0Cb5F3IDz92DQ6G6nQzLTgY-1j75aSrSf", body);
-    clientName.value = "";
-    clientEmail.value = "";
-    clientMsg.value = "";
+
+    dialAnimation.onfinish = () => {
+        notificationButton.disabled = false;
+    };
 }
 
 function closeDialogue() {
+    notificationButton.disabled = true;
     const fadeOut = notificationBox
             .animate(
                 [{ opacity: "100%" }, { opacity: "0%" }],
