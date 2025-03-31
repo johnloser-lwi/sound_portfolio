@@ -6,7 +6,7 @@
     --alternative-font-color: black;
     --primary-color: rgb(255, 166, 0);
     --secondary-color: rgb(167, 108, 0);
-    --overlay: rgba(0, 0, 0, 0.8);
+    --overlay: #444b;
 }
 
 * {
@@ -205,17 +205,18 @@ textarea {
 
 #contact-form .button {
     width: 100%;
-}
+}   
 
 #notification-box {
     display: none;
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
     z-index: 200;
     background-color: var(--overlay);
+    opacity: 0;
 }
 
 #notification-box .dialogue {
@@ -230,6 +231,7 @@ textarea {
     background-color: var(--background-color);
     padding: 20px 50px;
     border-radius: 30px;
+    opacity: 0%;
 }
 
 #notification-box .button {

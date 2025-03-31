@@ -1,8 +1,10 @@
 const notificationBox = document.getElementById("notification-box");
+const notificationDial = document.querySelector("#notification-box .dialogue");
 const notificationMsg = document.getElementById("notification-msg");
 const clientName = document.getElementById("client-name");
 const clientEmail = document.getElementById("client-email");
 const clientMsg = document.getElementById("client-msg");
+
 const SENT =  "Message sent!";
 const INVALID = "Invalid information!";
 const ERROR = "Failed to send!";
@@ -18,9 +20,28 @@ function handleMail() {
 
     const body = `\nName: ${clientName.value}\nEmail: ${clientEmail.value}\n${clientMsg.value}\n\n`;
 
-    // window.open(`mailto:weiqinyangsound@gmail.com?subject=${"Info Requiry"}&body=${body}`);
     Notification.requestPermission().then((result) => {
-        notificationBox.style.display = result === "granted" ? "block" : "none";
+        if (!result.includes("granted")) return;
+        notificationBox.style.display = "block";
+        notificationBox
+            .animate(
+                [{ opacity: "0%"}, { opacity: "100%" }],
+                {
+                    fill: "forwards",
+                    easing: "ease-in-out",
+                    duration: 300,
+                },
+            );
+        notificationDial
+            .animate(
+                [{ opacity: "0%"}, { opacity: "100%" }],
+                {
+                    fill: "forwards",
+                    easing: "ease-in-out",
+                    delay: 200,
+                    duration: 300,
+                },
+            );
         notificationMsg.innerText = msg;
         if (msg !== SENT) return;
         discord_message("https://discord.com/api/webhooks/1356311727389540556/TwXNbLnuUikxpKwSRxIkWlXeDUzZ7pGOX5V0Cb5F3IDz92DQ6G6nQzLTgY-1j75aSrSf", body);
@@ -28,11 +49,31 @@ function handleMail() {
         clientEmail.value = "";
         clientMsg.value = "";
       });
-    
 }
 
 function closeDialogue() {
-    notificationBox.style.display = "none";
+    const fadeOut = notificationBox
+            .animate(
+                [{ opacity: "100%" }, { opacity: "0%" }],
+                {
+                fill: "forwards",
+                easing: "ease-in-out",
+                duration: 300,
+                },
+            )
+    fadeOut.onfinish = () => {
+                notificationBox.style.display = "none";
+            };
+
+    notificationDial
+            .animate(
+                [{ opacity: "100%"}, { opacity: "0%" }],
+                {
+                    fill: "forwards",
+                    easing: "ease-in-out",
+                    duration: 200,
+                },
+            );
 }
 
 function discord_message(webHookURL, message) {
