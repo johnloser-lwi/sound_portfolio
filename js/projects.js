@@ -1,12 +1,12 @@
 import videoList from "/js/video_info.js";
 
-function buildVideoSection(link, title, description) {
+function buildVideoSection(video_id, title, description) {
     const section = document.createElement("section");
     section.setAttribute("class", "project-card");
 
     const iframe = document.createElement("iframe");
     iframe.setAttribute("class", "project-video");
-    iframe.setAttribute("src", "https://www.youtube.com/embed/" + link);
+    iframe.setAttribute("src", "https://www.youtube.com/embed/" + video_id);
     iframe.setAttribute("title", title);
     iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
@@ -33,7 +33,7 @@ function generateProjects() {
     const projects = document.querySelector("div.projects");
     for (const video of videos) {
         projects.appendChild(
-            buildVideoSection(video.link, video.title, video.description)
+            buildVideoSection(video.video_id, video.title, video.description)
         );
     }
 };
