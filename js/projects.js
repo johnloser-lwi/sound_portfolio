@@ -6,7 +6,7 @@ function buildVideoSection(link, title, description) {
 
     const iframe = document.createElement("iframe");
     iframe.setAttribute("class", "project-video");
-    iframe.setAttribute("src", link);
+    iframe.setAttribute("src", "https://www.youtube.com/embed/" + link);
     iframe.setAttribute("title", title);
     iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
