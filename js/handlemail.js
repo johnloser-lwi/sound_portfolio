@@ -33,13 +33,13 @@ function handleMail() {
     if (msg !== SENT) return;
     discord_message("https://discord.com/api/webhooks/1356311727389540556/TwXNbLnuUikxpKwSRxIkWlXeDUzZ7pGOX5V0Cb5F3IDz92DQ6G6nQzLTgY-1j75aSrSf", body);
     clearInputs();
-}
+};
 
 function clearInputs() {
     clientName.value = "";
     clientEmail.value = "";
     clientMsg.value = "";
-}
+};
 
 function fadeInDialogue() {
     notificationBox.disabled = true;
@@ -61,7 +61,7 @@ function fadeInDialogue() {
     dialAnimation.onfinish = () => {
         notificationButton.disabled = false;
     };
-}
+};
 
 function closeDialogue() {
     notificationButton.disabled = true;
@@ -87,7 +87,7 @@ function closeDialogue() {
                     duration: 200,
                 },
             );
-}
+};
 
 function discord_message(webHookURL, message) {
     var xhr = new XMLHttpRequest();
@@ -100,7 +100,7 @@ function discord_message(webHookURL, message) {
     xhr.onerror = () => {
         notificationMsg.innerText = ERROR;
     }
-}
+};
 
 function validEmail(email) {
     return String(email)
