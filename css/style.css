@@ -7,6 +7,16 @@
     --primary-color: rgb(255, 166, 0);
     --secondary-color: rgb(167, 108, 0);
     --overlay: #444b;
+
+    --frame-shadow: 0 5px 5px #0008;
+    --video-shadow: 5px 5px 5px #0008;
+    --layer-top: 100;
+    --layer-overlay: 200;
+    
+    --transition-in-out: 0.2s ease-in-out;
+
+    --solid-border: 5px solid;
+    --input-border: 2px solid;
 }
 
 * {
@@ -35,9 +45,9 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 5px 5px #0008;
+    box-shadow: var(--frame-shadow);
     position: relative;
-    z-index: 100;
+    z-index: var(--layer-top);
 }
 
 header nav {
@@ -62,7 +72,7 @@ header nav ul {
 a {
     text-decoration: none;
     color: var(--alternative-font-color);
-    transition: color 0.2s ease-in-out;
+    transition: color var(--transition-in-out);
     opacity: 0%;
     animation: fade-in 0.4s ease-in-out 0.2s 1 forwards;
 }
@@ -117,7 +127,7 @@ main {
     border-radius: 20px;
     text-align: center;
     border: none;
-    transition: color 0.2s ease-in-out;
+    transition: color var(--transition-in-out);
     opacity: 0%;
     animation: fade-in 0.8s ease-in-out 0.2s 1 forwards;
 }
@@ -146,12 +156,12 @@ main {
     box-sizing: border-box;
     border-radius: 20px;
     color: var(--alternative-font-color);
-    border: 5px solid transparent;
-    transition: border 0.2s ease-in-out;
+    border: var(--solid-border) transparent;
+    transition: border var(--transition-in-out);
 }
 
 .project-card:hover {
-    border: 5px solid white;
+    border: var(--solid-border) white;
 }
 
 .project-video {
@@ -159,7 +169,7 @@ main {
     aspect-ratio: 16/9;
     width: 100%;
     border: 0;
-    box-shadow: 5px 5px 5px #0008;
+    box-shadow: var(--video-shadow);
 }
 
 .project-title {
@@ -194,12 +204,12 @@ textarea {
 .form-entry input, .form-entry textarea {
     padding: 0.5rem 1rem;
     border-radius: 20px;
-    border: 2px solid transparent;
-    transition: border 0.2s ease-in-out;
+    border: var(--input-border) transparent;
+    transition: border var(--transition-in-out);
 }
 
 .form-entry input:focus, .form-entry textarea:focus {
-    border: 2px solid var(--primary-color);
+    border: var(--input-border) var(--primary-color);
     outline: none;
 }
 
@@ -219,7 +229,7 @@ textarea {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 200;
+    z-index: var(--layer-overlay);
     background-color: var(--overlay);
     opacity: 0;
 }
@@ -252,8 +262,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    z-index: 100;
-    box-shadow: 0 -5px 5px #0008;
+    z-index: var(--layer-top);
+    box-shadow: var(--frame-shadow);
 }
 
 .socials {
@@ -270,7 +280,7 @@ footer {
 
 .socials a img {
     border-radius: 30%;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color var(--transition-in-out);
 }
 
 .socials a img:hover {
