@@ -8,7 +8,9 @@
     --secondary-color: rgb(167, 108, 0);
     --overlay: #444b;
 
+    --frame-size: 100px;
     --frame-shadow: 0 5px 5px #0008;
+    --frame-shadow-reverse: 0 -5px 5px #0008;
     --video-shadow: 5px 5px 5px #0008;
     --layer-top: 100;
     --layer-overlay: 200;
@@ -40,7 +42,7 @@ body {
 header {
     background-color: var(--primary-color);
     padding: 0 50px;
-    height: 10%;
+    height: var(--frame-size);
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -86,7 +88,7 @@ a:hover {
 }
 
 main {
-    height: 85%;
+    height: calc(100% - var(--frame-size) * 1.5);
     overflow-y: scroll;
     align-content: center;
     animation: fade-in 0.8s ease-in-out 1 forwards;
@@ -102,7 +104,7 @@ main {
 }
 
 .info-image {
-    height: 80vh;
+    height: 80%;
     border-radius: 30px;
 }
 
@@ -255,7 +257,7 @@ textarea {
 }
 
 footer {
-    height: 5%;
+    height: calc(var(--frame-size) / 2);
     background-color: var(--primary-color);
     padding: 0 50px;
     display: flex;
@@ -263,7 +265,7 @@ footer {
     justify-content: center;
     position: relative;
     z-index: var(--layer-top);
-    box-shadow: var(--frame-shadow);
+    box-shadow: var(--frame-shadow-reverse);
 }
 
 .socials {
