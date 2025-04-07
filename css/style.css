@@ -318,6 +318,10 @@ footer {
 }
 
 @media (max-width: 500px) {
+    header nav {
+        font-size: inherit;
+    }
+
     .projects {
         gap: 20px
     }
